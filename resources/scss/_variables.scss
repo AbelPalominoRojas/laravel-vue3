@@ -1,0 +1,24 @@
+// scss-docs-start color-variables
+$blue:    #2196f3;
+$red:     #f44336;
+$yellow:  #ffeb3b;
+$green:   #4caf50;
+$cyan:    #00bcd4;
+// scss-docs-end color-variables
+
+// // scss-docs-start theme-color-variables
+$primary:       #41b883;
+// // scss-docs-end theme-color-variables
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio:   2.0;
+
+
+//=========custom my variables=========
+// Create your own map
+$custom-colors: (
+  "accent": #34495e
+);
+
+
