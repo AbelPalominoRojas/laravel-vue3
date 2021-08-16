@@ -1,7 +1,13 @@
 <template>
     <div class="card">
-        <div class="card-header">
-            Lista de categorias
+        <div class="card-header d-flex align-items-center justify-content-between">
+            List categories
+            <div>
+                <router-link :to="{ name: 'category.create' }" class="btn btn-sm btn-success">
+                    <i class="fas fa-plus"></i>
+                    <span class="d-none d-sm-inline-block ms-1">New</span>
+                </router-link>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -55,7 +61,7 @@
 
             onMounted(async () => {
                 try {
-                    const response = await fetch('http://localhost:8000/api/category');
+                    const response = await fetch(`${appApiBaseUrl}/category`);
                     const data = await response.json();
 
                     categories.value = data;
