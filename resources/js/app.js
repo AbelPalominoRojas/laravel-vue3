@@ -1,10 +1,10 @@
 require('./bootstrap');
 
 import { createApp } from 'vue';
-import Example from  './components/Example'
+import CategoryIndex from './components/category/CategoryIndex';
 
 createApp({
 	components: {
-		Example,
+        CategoryIndex
 	}
 }).mount('#app');
