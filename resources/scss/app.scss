@@ -10,3 +10,11 @@
 
 // Import Bootstrap source files
 @import "~bootstrap/scss/bootstrap";
+
+//fortawesome
+$fa-font-path: "../fonts";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";

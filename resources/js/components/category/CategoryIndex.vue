@@ -18,9 +18,15 @@
                         <tr v-for="cat in categories" :key="cat.id">
                             <td>
                                 <div class="text-nowrap">
-                                    <button type="button" class="btn btn-outline-info">Edit</button>
-                                    <button type="button" class="btn btn-outline-warning">Show</button>
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    <button type="button" class="btn btn-sm btn-outline-warning border-0">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-info border-0">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger border-0">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </div>
                             </td>
                             <td v-text="cat.id"></td>

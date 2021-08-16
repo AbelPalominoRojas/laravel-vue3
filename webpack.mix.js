@@ -13,8 +13,21 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .copyDirectory([
+        'node_modules/@fortawesome/fontawesome-free/webfonts',
+        // 'resources/fonts'
+    ], 'public/fonts')
     .sass('resources/scss/app.scss',
-        'public/css');
+        'public/css')
+    .options({
+        // postCss: [
+        //     require('postcss-css-variables')()
+        // ],
+        processCssUrls: false,
+        // quietDeps: true
+    });
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ]);
+
+mix.disableNotifications();
