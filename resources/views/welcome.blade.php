@@ -23,7 +23,10 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <router-link :to="{ name: 'home' }" class="nav-link active">Home</router-link>
+                  </li>
+                  <li class="nav-item">
+                    <router-link :to="{ name: 'category' }" class="nav-link">Category</router-link>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -38,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 py-3">
-                    <category-index></category-index>
+                    <router-view></router-view>
                 </div>
 
                 <div class="col-12">

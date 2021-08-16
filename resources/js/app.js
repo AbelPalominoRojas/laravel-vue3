@@ -1,10 +1,8 @@
 require('./bootstrap');
 
 import { createApp } from 'vue';
-import CategoryIndex from './components/category/CategoryIndex';
+import router from './routes';
 
-createApp({
-	components: {
-        CategoryIndex
-	}
-}).mount('#app');
+createApp({})
+.use(router)
+.mount('#app');
