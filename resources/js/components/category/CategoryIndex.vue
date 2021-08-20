@@ -27,10 +27,12 @@
                                     <button type="button" class="btn btn-sm btn-outline-warning border-0">
                                         <i class="fas fa-eye"></i>
                                     </button>
-                                    <router-link :to="{ name: 'category.edit', params:{id: cat.id } }" class="btn btn-sm btn-outline-info border-0">
+                                    <router-link :to="{ name: 'category.edit', params:{id: cat.id } }"
+                                        class="btn btn-sm btn-outline-info border-0">
                                         <i class="fas fa-edit"></i>
                                     </router-link>
-                                    <button type="button" class="btn btn-sm btn-outline-danger border-0">
+                                    <button type="button" @click.prevent="deleteData(cat)"
+                                        class="btn btn-sm btn-outline-danger border-0">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -50,7 +52,8 @@
     import {
         onMounted,
         ref
-    } from 'vue'
+    } from 'vue';
+    import Swal from 'sweetalert2';
 
     export default {
 
@@ -59,7 +62,11 @@
             //reactive state
             let categories = ref([]);
 
-            onMounted(async () => {
+            onMounted(() => {
+                listData();
+            });
+
+            const listData = async () => {
                 try {
                     const response = await fetch(`${appApiBaseUrl}/category`);
                     const data = await response.json();
@@ -68,12 +75,48 @@
                 } catch (error) {
                     console.log(error);
                 }
+            }
 
-            });
+            const deleteData = async (item) => {
+                try {
 
+                    const swalResponse = await Swal.fire({
+                        title: 'Are you sure?',
+                        html: `¿Estás seguro de que quieres eliminar <b>${item.name}</b>?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        customClass: {
+                            confirmButton: 'btn btn-info mx-1',
+                            cancelButton: 'btn btn-danger mx-1'
+                        },
+                        buttonsStyling: false,
+                        confirmButtonText: 'confirmar',
+                        cancelButtonText: 'cancelar',
+                    });
+
+                    if (swalResponse.isConfirmed) {
+                        const response = await fetch(`${appApiBaseUrl}/category/${item.id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+
+                        const data = await response.json();
+
+                        console.log(data);
+
+                        listData();
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
 
             return {
-                categories
+                categories,
+                deleteData
             }
         },
     }
