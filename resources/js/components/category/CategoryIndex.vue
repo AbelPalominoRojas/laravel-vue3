@@ -24,7 +24,8 @@
                         <tr v-for="cat in categories" :key="cat.id">
                             <td>
                                 <div class="text-nowrap">
-                                    <button type="button" class="btn btn-sm btn-outline-warning border-0">
+                                    <button type="button" @click.prevent="showData(cat)"
+                                        class="btn btn-sm btn-outline-warning border-0">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                     <router-link :to="{ name: 'category.edit', params:{id: cat.id } }"
@@ -47,6 +48,10 @@
 
         </div>
     </div>
+
+    <!-- Modal -->
+    <modal-category ref="modalCategoryRef">
+    </modal-category>
 </template>
 <script>
     import {
@@ -54,13 +59,17 @@
         ref
     } from 'vue';
     import Swal from 'sweetalert2';
+    import ModalCategory from './_ModalCategory';
 
     export default {
-
+        components: {
+            ModalCategory
+        },
         setup() {
 
             //reactive state
-            let categories = ref([]);
+            const categories = ref([]);
+            const modalCategoryRef = ref(null);
 
             onMounted(() => {
                 listData();
@@ -114,9 +123,15 @@
                 }
             }
 
+            const showData = (item) => {
+                modalCategoryRef.value.showModal(item);
+            }
+
             return {
                 categories,
-                deleteData
+                deleteData,
+                showData,
+                modalCategoryRef
             }
         },
     }
