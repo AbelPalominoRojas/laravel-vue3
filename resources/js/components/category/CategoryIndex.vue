@@ -27,9 +27,9 @@
                                     <button type="button" class="btn btn-sm btn-outline-warning border-0">
                                         <i class="fas fa-eye"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-outline-info border-0">
+                                    <router-link :to="{ name: 'category.edit', params:{id: cat.id } }" class="btn btn-sm btn-outline-info border-0">
                                         <i class="fas fa-edit"></i>
-                                    </button>
+                                    </router-link>
                                     <button type="button" class="btn btn-sm btn-outline-danger border-0">
                                         <i class="fas fa-trash"></i>
                                     </button>

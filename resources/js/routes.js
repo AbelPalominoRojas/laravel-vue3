@@ -15,8 +15,12 @@ const routes = [
     {
         path: '/category/create',
         name: 'category.create',
-        // component: require('./components/category/CategoryIndex').default
         component: () => import('./components/category/CategoryCreate')
+    },
+    {
+        path: '/category/edit/:id',
+        name: 'category.edit',
+        component: () => import('./components/category/CategoryEdit')
     },
     // { path: '*', redirect: '/' },
     // { path: '/', redirect: '/' },
