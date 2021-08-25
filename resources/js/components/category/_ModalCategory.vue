@@ -3,11 +3,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Category detail</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <pre>{{category}}</pre>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Name</label>
+                            <span type="text" v-text="category.name" class="form-control"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Description</label>
+                            <span type="text" v-text="category.description" class="form-control"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -30,10 +39,7 @@
     } from 'bootstrap';
 
     export default {
-        emits: ['showCategory'],
-        setup(props, {
-            emit
-        }) {
+        setup() {
 
             const category = reactive({
                 name: '',
@@ -53,7 +59,6 @@
             });
 
             const showModal = (data) => {
-                console.log('showModal', data);
 
                 category.name = data.name;
                 category.description = data.description;
@@ -61,15 +66,9 @@
                 currentModal.show();
             };
 
-            const emitShowCategory = () => {
-                emit('showCategory', true);
-            };
-
-
             return {
                 category,
-                showModal,
-                emitShowCategory
+                showModal
             }
         },
     }
